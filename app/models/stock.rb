@@ -1,5 +1,5 @@
 class Stock < ActiveRecord::Base
-  has_many :quarterly_reports
+  has_many :quarterly_reports, dependent: :destroy
 
   # save symbol as up case
   before_save { self.symbol = symbol.upcase }
@@ -12,5 +12,5 @@ class Stock < ActiveRecord::Base
   validates :company_name, presence: true, length: { within: 1..128 }
 
   # stock exchange
-  validates :stock_exchange, presence: true, length: { within: 1..6 } # FIXME
+  validates :stock_exchange, length: { within: 1..6 } # FIXME
 end

@@ -5,3 +5,11 @@
   <li><%= @stock.country %></li>
   <li><%= @stock.stock_exchange %></li>
 </ul>
+
+<% @reports.each do |rp| %>
+  <ul>
+    <li>year: <%= rp.year %></li>
+    <li>quarter: <%= rp.quarter %></li>
+    <li>revenue: <%= rp.revenue %></li>
+  </ul>
+<% end %>
