@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Earningfocus::Application.config.secret_key_base = '0ffff2e6eac373ee674452b938dc4d5a4968c8de12266cbdfb0849d65c4437b6bc056a1de7dfade9bd3cf932f6be2e78e232ce3487d26ddcf0da96d3058910d3'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Earningfocus::Application.config.secret_key_base = secure_token
