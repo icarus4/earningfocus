@@ -68,3 +68,4 @@ group :test do
 end
 
 gem 'stock_quote'
+gem 'bootstrap-sass', '~> 2.3.2.0'

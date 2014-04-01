@@ -6,6 +6,7 @@
   <li><%= @stock.stock_exchange %></li>
 </ul>
 
+<div>
 <% @reports.each do |rp| %>
   <ul>
     <li>year: <%= rp.year %></li>
@@ -13,3 +14,4 @@
     <li>revenue: <%= rp.revenue %></li>
   </ul>
 <% end %>
+</div>
