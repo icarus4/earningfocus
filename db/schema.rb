@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401093956) do
+ActiveRecord::Schema.define(version: 20140401094744) do
+
+  create_table "quarterly_reports", force: true do |t|
+    t.integer  "stock_id"
+    t.integer  "year"
+    t.integer  "quarter"
+    t.float    "revenue"
+    t.float    "gross_profit"
+    t.float    "op_income"
+    t.float    "net_income_before_tax"
+    t.float    "net_income"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "quarterly_reports", ["stock_id"], name: "index_quarterly_reports_on_stock_id"
 
   create_table "stocks", force: true do |t|
     t.string   "symbol"
