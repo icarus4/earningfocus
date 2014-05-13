@@ -24,3 +24,6 @@ doc/
 .idea
 bundler_stubs/
 .secret
+
+# database
+config/database.yml
