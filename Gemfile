@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.4'
+gem 'rails', '4.0.5'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -41,8 +41,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-group :production do
-  gem 'pg', '0.15.1'
+group :production, :development do
+  gem 'pg', '~> 0.17.1'
 end
 
 group :development, :test do
@@ -67,5 +67,5 @@ group :test do
   # gem 'wdm', '0.1.0'
 end
 
-gem 'stock_quote'
+gem 'stock_quote', '1.1.2'
 gem 'bootstrap-sass', '~> 2.3.2.0'
