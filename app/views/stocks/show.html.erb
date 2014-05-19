@@ -1,17 +1,4 @@
-<h1><%= @stock.symbol %></h1>
-<ul>
-  <li><%= @stock.symbol %></li>
-  <li><%= @stock.company_name %></li>
-  <li><%= @stock.country %></li>
-  <li><%= @stock.stock_exchange %></li>
-</ul>
-
 <div>
-<% @reports.each do |rp| %>
-  <ul>
-    <li>year: <%= rp.year %></li>
-    <li>quarter: <%= rp.quarter %></li>
-    <li>revenue: <%= rp.revenue %></li>
-  </ul>
-<% end %>
+  <h2>Stock: <%= @symbol %></h2>
+  <div id="stock_chart" style="width:600px; height:400px;"></div>
 </div>

@@ -69,3 +69,4 @@ end
 
 gem 'stock_quote', '1.1.2'
 gem 'bootstrap-sass', '~> 2.3.2.0'
+gem 'awesome_print', '~> 1.2.0'

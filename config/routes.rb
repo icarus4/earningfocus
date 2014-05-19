@@ -1,6 +1,7 @@
 Earningfocus::Application.routes.draw do
 
   match 'stocks/:symbol', to: 'stocks#show', via: 'get'
+  match 'statements/:symbol', to: 'statements#query_statement', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
