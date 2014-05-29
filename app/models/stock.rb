@@ -1,5 +1,5 @@
 class Stock < ActiveRecord::Base
-  has_many :quarterly_reports, dependent: :destroy
+  has_many :statements, dependent: :destroy
 
   # save symbol as up case
   before_save { self.symbol = symbol.upcase }

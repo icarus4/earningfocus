@@ -11,12 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401094744) do
+ActiveRecord::Schema.define(version: 20140529075346) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "quarterly_reports", force: true do |t|
+  create_table "statements", force: true do |t|
     t.integer  "stock_id"
     t.integer  "year"
     t.integer  "quarter"
@@ -29,7 +26,7 @@ ActiveRecord::Schema.define(version: 20140401094744) do
     t.datetime "updated_at"
   end
 
-  add_index "quarterly_reports", ["stock_id"], name: "index_quarterly_reports_on_stock_id", using: :btree
+  add_index "statements", ["stock_id"], name: "index_statements_on_stock_id"
 
   create_table "stocks", force: true do |t|
     t.string   "symbol"
@@ -40,6 +37,6 @@ ActiveRecord::Schema.define(version: 20140401094744) do
     t.datetime "updated_at"
   end
 
-  add_index "stocks", ["symbol"], name: "index_stocks_on_symbol", using: :btree
+  add_index "stocks", ["symbol"], name: "index_stocks_on_symbol"
 
 end

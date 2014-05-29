@@ -1,4 +1,4 @@
-class QuarterlyReport < ActiveRecord::Base
+class Statement < ActiveRecord::Base
   belongs_to :stock
 
   # stock id
