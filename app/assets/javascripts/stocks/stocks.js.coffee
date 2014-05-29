@@ -2,7 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-
 chart_options =
   series:
     lines:
@@ -16,7 +15,7 @@ chart_options =
     labelHeight: 100
 
 
-$(document).ready ->
+$ ->
   path = window.location.pathname.replace "/stocks/", ""
   $.ajax '/statements/' + path,
     type: 'GET'

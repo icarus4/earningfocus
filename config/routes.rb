@@ -1,5 +1,6 @@
 Earningfocus::Application.routes.draw do
 
+  root "static_pages#home"
   match 'stocks/:symbol', to: 'stocks#show', via: 'get'
   match 'statements/:symbol', to: 'statements#query_statement', via: 'get'
 
