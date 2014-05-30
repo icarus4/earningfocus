@@ -11,22 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140529084546) do
+ActiveRecord::Schema.define(version: 20140530041444) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "statements", force: true do |t|
     t.integer  "stock_id"
     t.integer  "year"
     t.integer  "quarter"
-    t.float    "revenue"
-    t.float    "gross_profit"
-    t.float    "op_income"
-    t.float    "net_income_before_tax"
-    t.float    "net_income"
+    t.integer  "revenue"
+    t.integer  "gross_profit"
+    t.integer  "net_income_before_tax"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "symbol"
+    t.string   "document_type"
+    t.date     "fiscal_period_end_date"
+    t.integer  "fiscal_period_duration_in_month"
+    t.integer  "operating_income"
+    t.integer  "net_income_after_tax"
+    t.integer  "cost_of_revenue"
+    t.integer  "total_operating_expense"
+    t.float    "eps_basic"
+    t.float    "eps_diluted"
   end
 
-  add_index "statements", ["stock_id"], name: "index_statements_on_stock_id"
+  add_index "statements", ["stock_id"], name: "index_statements_on_stock_id", using: :btree
+  add_index "statements", ["symbol"], name: "index_statements_on_symbol", using: :btree
 
   create_table "stocks", force: true do |t|
     t.string   "symbol"
@@ -38,8 +50,8 @@ ActiveRecord::Schema.define(version: 20140529084546) do
     t.string   "cik"
   end
 
-  add_index "stocks", ["cik"], name: "index_stocks_on_cik", unique: true
-  add_index "stocks", ["company_name"], name: "index_stocks_on_company_name"
-  add_index "stocks", ["symbol"], name: "index_stocks_on_symbol"
+  add_index "stocks", ["cik"], name: "index_stocks_on_cik", unique: true, using: :btree
+  add_index "stocks", ["company_name"], name: "index_stocks_on_company_name", using: :btree
+  add_index "stocks", ["symbol"], name: "index_stocks_on_symbol", using: :btree
 
 end
