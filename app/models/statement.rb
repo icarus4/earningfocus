@@ -9,11 +9,26 @@ class Statement < ActiveRecord::Base
     numericality: { greater_than_or_equal_to: 1900 }
 
   # quarter
-  validates :quarter, presence: true, length: { is: 1 },
+  validates :quarter, length: { is: 1 },
     numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 4 }
 
-  # avoid duplicated quarterly report
-  validates_uniqueness_of :quarter, scope: [:stock_id, :year]
+  # revenue
+  validates :revenue, presence: { message: "revenue cannot not be blank" },
+    numericality: { greater_than_or_equal_to: 0 }
 
-  validates :revenue, presence: { message: "revenue cannot not be blank" }
+  # gross_profit
+  validates :gross_profit, numericality: { greater_than_or_equal_to: 0 }
+
+  # symbol
+  validates :symbol, presence: true, length: { within: 1..6 }
+
+  # fiscal_period_end_date
+  validates :symbol, presence: true
+
+  # fiscal_period_duration_in_month
+  validates :fiscal_period_duration_in_month, presence: true, numericality: { greater_than_or_equal_to: 0 }
+
+  # avoid duplicated report
+  validates_uniqueness_of :quarter, :fiscal_period_end_date, scope: [:stock_id, :year]
+
 end
