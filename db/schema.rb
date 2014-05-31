@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140531021324) do
+ActiveRecord::Schema.define(version: 20140531114547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,19 +20,19 @@ ActiveRecord::Schema.define(version: 20140531021324) do
     t.integer  "stock_id"
     t.integer  "year"
     t.integer  "quarter"
-    t.integer  "revenue"
-    t.integer  "gross_profit"
-    t.integer  "net_income_before_tax"
+    t.integer  "revenue",                         limit: 8
+    t.integer  "gross_profit",                    limit: 8
+    t.integer  "net_income_before_tax",           limit: 8
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "symbol"
     t.string   "document_type"
     t.date     "fiscal_period_end_date"
     t.integer  "fiscal_period_duration_in_month"
-    t.integer  "operating_income"
-    t.integer  "net_income_after_tax"
-    t.integer  "cost_of_revenue"
-    t.integer  "total_operating_expense"
+    t.integer  "operating_income",                limit: 8
+    t.integer  "net_income_after_tax",            limit: 8
+    t.integer  "cost_of_revenue",                 limit: 8
+    t.integer  "total_operating_expense",         limit: 8
     t.float    "eps_basic"
     t.float    "eps_diluted"
   end
