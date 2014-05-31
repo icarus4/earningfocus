@@ -20,13 +20,13 @@ class Stock < ActiveRecord::Base
   # stock exchange
   validates :stock_exchange, inclusion: { in: ['NYSE', 'NASDAQ', 'AMEX', 'NYSE Arca', 'OTCBB', nil] }
 
-  # period_end_date_of_doc_that_stock_info_parsed_from
-  validate :period_end_date_of_doc_that_stock_info_parsed_from_cannot_be_in_the_future
+  # fiscal_period_end_date_of_doc_that_stock_info_parsed_from
+  validate :fiscal_period_end_date_of_doc_that_stock_info_parsed_from_cannot_be_in_the_future
 
 
-  def period_end_date_of_doc_that_stock_info_parsed_from_cannot_be_in_the_future
-    errors.add(:period_end_date_of_doc_that_stock_info_parsed_from, "can't be in the future") if
-      !period_end_date_of_doc_that_stock_info_parsed_from.blank? and
-      period_end_date_of_doc_that_stock_info_parsed_from > Date.today
+  def fiscal_period_end_date_of_doc_that_stock_info_parsed_from_cannot_be_in_the_future
+    errors.add(:fiscal_period_end_date_of_doc_that_stock_info_parsed_from, "can't be in the future") if
+      !fiscal_period_end_date_of_doc_that_stock_info_parsed_from.blank? and
+      fiscal_period_end_date_of_doc_that_stock_info_parsed_from > Date.today
   end
 end

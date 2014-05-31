@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140531114547) do
+ActiveRecord::Schema.define(version: 20140531134822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,12 +43,12 @@ ActiveRecord::Schema.define(version: 20140531114547) do
   create_table "stocks", force: true do |t|
     t.string   "symbol"
     t.string   "company_name"
-    t.string   "country",                                            default: "US"
+    t.string   "country",                                                   default: "US"
     t.string   "stock_exchange"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cik"
-    t.date     "period_end_date_of_doc_that_stock_info_parsed_from"
+    t.date     "fiscal_period_end_date_of_doc_that_stock_info_parsed_from"
   end
 
   add_index "stocks", ["cik"], name: "index_stocks_on_cik", unique: true, using: :btree
