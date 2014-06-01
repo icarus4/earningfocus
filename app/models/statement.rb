@@ -2,14 +2,14 @@ class Statement < ActiveRecord::Base
   belongs_to :stock
 
   # stock id
-  validates :stock_id, presence: true
+  validates :stock_id, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
   # year
   validates :year, presence: true, length: { is: 4 },
     numericality: { greater_than_or_equal_to: 1900 }
 
   # quarter
-  validates :quarter, length: { is: 1 },
+  validates :quarter, length: { is: 1 }, allow_nil: true,
     numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 4 }
 
   # revenue
@@ -17,7 +17,7 @@ class Statement < ActiveRecord::Base
     numericality: { greater_than_or_equal_to: 0 }
 
   # gross_profit
-  validates :gross_profit, numericality: { greater_than_or_equal_to: 0 }
+  validates :gross_profit, allow_nil: true, numericality: { greater_than_or_equal_to: 0 }
 
   # symbol
   validates :symbol, presence: true, length: { within: 1..6 }
@@ -30,5 +30,8 @@ class Statement < ActiveRecord::Base
 
   # avoid duplicated report
   validates_uniqueness_of :quarter, :fiscal_period_end_date, scope: [:stock_id, :year]
+
+  # statement_link
+  validates :statement_link, allow_nil: true, length: { maximum: 255 }
 
 end

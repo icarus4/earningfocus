@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140531134822) do
+ActiveRecord::Schema.define(version: 20140601015952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140531134822) do
     t.integer  "total_operating_expense",         limit: 8
     t.float    "eps_basic"
     t.float    "eps_diluted"
+    t.string   "statement_link"
   end
 
   add_index "statements", ["stock_id"], name: "index_statements_on_stock_id", using: :btree
